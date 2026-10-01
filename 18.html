@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dla Wiki 🖤❤️</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #0a0000;
+    color: #f5e6e6;
+    overflow-x: hidden;
+    padding-bottom: 90px;
+  }
+
+  /* INTRO */
+  .intro {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background: radial-gradient(circle at center, #2a0000 0%, #0a0000 70%);
+    padding: 20px;
+  }
+  .intro::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,0,0,0.15) 0%, transparent 60%);
+    animation: pulse 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+  .intro h1 {
+    font-size: clamp(3rem, 12vw, 8rem);
+    letter-spacing: 0.3em;
+    color: #ff2b2b;
+    text-shadow: 0 0 30px rgba(255,0,0,0.8), 0 0 60px rgba(255,0,0,0.4);
+    margin-bottom: 20px;
+    animation: glow 3s ease-in-out infinite;
+  }
+  @keyframes glow {
+    0%, 100% { text-shadow: 0 0 30px rgba(255,0,0,0.8), 0 0 60px rgba(255,0,0,0.4); }
+    50% { text-shadow: 0 0 50px rgba(255,0,0,1), 0 0 90px rgba(255,0,0,0.6); }
+  }
+  .intro .date {
+    font-size: 1.2rem;
+    letter-spacing: 0.3em;
+    color: #ffb3b3;
+    margin-bottom: 15px;
+  }
+  .intro .quote {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #e0b3b3;
+    max-width: 600px;
+  }
+
+  /* LICZNIK */
+  .counter-section {
+    background: linear-gradient(180deg, #0a0000 0%, #1a0000 100%);
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,0,0,0.3);
+    border-bottom: 1px solid rgba(255,0,0,0.3);
+  }
+  .counter-title {
+    font-size: 1.5rem;
+    color: #ff2b2b;
+    margin-bottom: 30px;
+    letter-spacing: 0.1em;
+  }
+  .counter {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .counter-box {
+    background: rgba(255,0,0,0.08);
+    border: 1px solid rgba(255,0,0,0.3);
+    border-radius: 12px;
+    padding: 20px 25px;
+    min-width: 100px;
+    backdrop-filter: blur(5px);
+  }
+  .counter-box .num {
+    font-size: 2.5rem;
+    color: #ff2b2b;
+    font-weight: bold;
+    display: block;
+    text-shadow: 0 0 15px rgba(255,0,0,0.6);
+  }
+  .counter-box .label {
+    font-size: 0.85rem;
+    color: #e0b3b3;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+
+  /* SEKCJE */
+  section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  section h2 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: #ff2b2b;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 20px rgba(255,0,0,0.4);
+  }
+
+  /* OŚ CZASU */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid rgba(255,0,0,0.4);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 20px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: #ff2b2b;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255,0,0,0.8);
+  }
+  .timeline-item .emoji {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  .timeline-item h3 {
+    display: inline;
+    color: #ffb3b3;
+    font-size: 1.3rem;
+  }
+  .timeline-item p {
+    margin-top: 8px;
+    color: #d9b3b3;
+    line-height: 1.6;
+  }
+
+  /* ZA CO CIĘ KOCHAM */
+  .love-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .love-card {
+    background: rgba(255,0,0,0.06);
+    border: 1px solid rgba(255,0,0,0.25);
+    border-radius: 15px;
+    padding: 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .love-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255,0,0,0.2);
+  }
+  .love-card .emoji {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .love-card p {
+    color: #f0d0d0;
+    line-height: 1.5;
+  }
+
+  /* LIST */
+  .letter {
+    background: rgba(255,0,0,0.05);
+    border: 1px solid rgba(255,0,0,0.25);
+    border-radius: 20px;
+    padding: 40px;
+    line-height: 1.9;
+    font-size: 1.05rem;
+    color: #f0d0d0;
+  }
+  .letter p { margin-bottom: 18px; }
+  .letter .signature {
+    text-align: right;
+    font-size: 1.3rem;
+    color: #ff2b2b;
+    margin-top: 30px;
+    font-style: italic;
+  }
+
+  /* URODZINY */
+  .birthday {
+    text-align: center;
+    background: radial-gradient(circle, rgba(255,0,0,0.15) 0%, transparent 70%);
+    border-radius: 20px;
+    padding: 60px 30px;
+  }
+  .birthday .date-big {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    color: #ff2b2b;
+    font-weight: bold;
+    text-shadow: 0 0 30px rgba(255,0,0,0.6);
+    margin: 20px 0;
+    letter-spacing: 0.1em;
+  }
+  .birthday p {
+    font-size: 1.2rem;
+    color: #e0b3b3;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* UKRYTA NIESPODZIANKA */
+  .surprise-section {
+    text-align: center;
+    padding: 80px 20px;
+  }
+  .surprise-btn {
+    background: linear-gradient(135deg, #ff2b2b, #8b0000);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    box-shadow: 0 0 30px rgba(255,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-family: inherit;
+  }
+  .surprise-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(255,0,0,0.8);
+  }
+  .surprise-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease;
+    margin-top: 30px;
+  }
+  .surprise-content.open {
+    max-height: 800px;
+  }
+  .surprise-inner {
+    background: rgba(255,0,0,0.08);
+    border: 1px solid rgba(255,0,0,0.3);
+    border-radius: 20px;
+    padding: 40px;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: #f0d0d0;
+  }
+
+  /* PIOSENKA */
+  .song-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255,0,0,0.04);
+    border-top: 1px solid rgba(255,0,0,0.2);
+    border-bottom: 1px solid rgba(255,0,0,0.2);
+  }
+  .song-section h3 {
+    color: #ff2b2b;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .song-section p {
+    color: #e0b3b3;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .song-section .song-title {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid rgba(255,0,0,0.5);
+    border-radius: 50px;
+    color: #ffb3b3;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* STOPKA */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #8b5555;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* SERCA W TLE */
+  .hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .heart {
+    position: absolute;
+    color: rgba(255,0,0,0.15);
+    font-size: 1.5rem;
+    animation: float 12s linear infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* KARUZELA */
+  .carousel {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .carousel-viewport {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 43, 43, 0.4);
+    box-shadow: 0 10px 50px rgba(255, 0, 0, 0.35);
+    background: #0a0000;
+    aspect-ratio: 3 / 4;
+    max-height: 75vh;
+  }
+  .carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.4s ease;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .carousel-img.fading {
+    opacity: 0;
+  }
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 43, 43, 0.5);
+    transition: all 0.25s;
+    user-select: none;
+    line-height: 1;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+  }
+  .carousel-nav:hover {
+    background: rgba(255, 43, 43, 0.6);
+    box-shadow: 0 0 25px rgba(255, 43, 43, 0.9);
+    transform: translateY(-50%) scale(1.1);
+  }
+  .carousel-prev { left: 15px; }
+  .carousel-next { right: 15px; }
+  .carousel-info {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .carousel-counter {
+    color: #ffb3b3;
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    background: rgba(255, 43, 43, 0.1);
+    padding: 6px 18px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 43, 43, 0.3);
+  }
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    padding: 0 10px;
+  }
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 43, 43, 0.3);
+    cursor: pointer;
+    transition: all 0.25s;
+    border: none;
+    padding: 0;
+  }
+  .carousel-dot:hover {
+    background: rgba(255, 43, 43, 0.6);
+    transform: scale(1.3);
+  }
+  .carousel-dot.active {
+    background: #ff2b2b;
+    width: 24px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(255, 43, 43, 0.8);
+  }
+
+  /* ODTWARZACZ MUZYKI */
+  .music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    background: linear-gradient(135deg, rgba(30, 0, 0, 0.98), rgba(60, 0, 0, 0.98));
+    border: 1px solid rgba(255, 43, 43, 0.4);
+    border-radius: 18px;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    backdrop-filter: blur(20px);
+    box-shadow:
+      0 8px 40px rgba(255, 0, 0, 0.35),
+      0 0 0 1px rgba(255, 43, 43, 0.1) inset,
+      0 1px 0 rgba(255, 255, 255, 0.05) inset;
+    max-width: 95vw;
+    min-width: 320px;
+    transition: box-shadow 0.3s ease;
+  }
+  .music-player:hover {
+    box-shadow:
+      0 10px 50px rgba(255, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 43, 43, 0.2) inset,
+      0 1px 0 rgba(255, 255, 255, 0.08) inset;
+  }
+  .play-btn {
+    background: linear-gradient(135deg, #ff2b2b, #8b0000);
+    border: none;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 0 20px rgba(255, 43, 43, 0.6),
+      0 0 0 3px rgba(255, 43, 43, 0.1);
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .play-btn::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 43, 43, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .play-btn:hover {
+    transform: scale(1.08);
+    box-shadow:
+      0 0 30px rgba(255, 43, 43, 0.9),
+      0 0 0 3px rgba(255, 43, 43, 0.2);
+  }
+  .play-btn:hover::before { opacity: 1; }
+  .play-btn:active { transform: scale(0.96); }
+  .music-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 200px;
+    flex: 1;
+  }
+  .music-title {
+    color: #ffcccc;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(255, 43, 43, 0.3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .music-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  #seekBar {
+    flex: 1;
+    accent-color: #ff2b2b;
+    cursor: pointer;
+    height: 4px;
+    min-width: 120px;
+    border-radius: 2px;
+    background: rgba(255, 43, 43, 0.15);
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+  }
+  #seekBar::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff2b2b;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 43, 43, 0.8);
+    transition: transform 0.15s;
+  }
+  #seekBar::-webkit-slider-thumb:hover { transform: scale(1.3); }
+  #seekBar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border: none;
+    border-radius: 50%;
+    background: #ff2b2b;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 43, 43, 0.8);
+  }
+  .time-display {
+    color: #aa7777;
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    min-width: 75px;
+    text-align: right;
+    letter-spacing: 0.05em;
+  }
+  .volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding-left: 12px;
+    border-left: 1px solid rgba(255, 43, 43, 0.2);
+  }
+  .vol-icon {
+    cursor: pointer;
+    font-size: 1.05rem;
+    user-select: none;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 0 4px rgba(255, 43, 43, 0.4));
+  }
+  .vol-icon:hover { transform: scale(1.15); }
+  #volumeBar {
+    width: 70px;
+    accent-color: #ff2b2b;
+    cursor: pointer;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 43, 43, 0.15);
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+  }
+  #volumeBar::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #ff2b2b;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(255, 43, 43, 0.8);
+  }
+  #volumeBar::-moz-range-thumb {
+    width: 11px;
+    height: 11px;
+    border: none;
+    border-radius: 50%;
+    background: #ff2b2b;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(255, 43, 43, 0.8);
+  }
+
+  /* Wersja mobilna */
+  @media (max-width: 600px) {
+    .music-player {
+      border-radius: 16px;
+      padding: 10px 14px;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      min-width: 0;
+      width: 94vw;
+    }
+    .play-btn { width: 42px; height: 42px; }
+    .music-title { font-size: 0.75rem; }
+    #volumeBar { width: 50px; }
+    .time-display { display: none; }
+    .music-info { min-width: 0; flex: 1 1 100%; }
+    .volume-control { padding-left: 8px; }
+    .carousel-nav { width: 45px; height: 45px; font-size: 1.8rem; }
+    .carousel-prev { left: 8px; }
+    .carousel-next { right: 8px; }
+    .carousel-viewport { aspect-ratio: 3 / 4; max-height: 65vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SERCA W TLE -->
+<div class="hearts" id="hearts"></div>
+
+<!-- ODTWARZACZ MUZYKI -->
+<div class="music-player" id="musicPlayer">
+  <audio id="bgMusic" loop preload="auto">
+    <source src="piosenka.mp3" type="audio/mpeg">
+    Twoja przeglądarka nie wspiera odtwarzania audio.
+  </audio>
+  <button class="play-btn" id="playBtn" onclick="toggleMusic()">▶️</button>
+  <div class="music-info">
+    <div class="music-title">Cheatz — Nieskończoność</div>
+    <div class="music-controls">
+      <input type="range" id="seekBar" min="0" max="100" value="0" step="0.1" oninput="seekAudio(this.value)">
+      <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
+    </div>
+  </div>
+  <div class="volume-control">
+    <span class="vol-icon" onclick="toggleMute()" id="volIcon">🔊</span>
+    <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="0.7" oninput="setVolume(this.value)">
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <h1>WIKA</h1>
+  <div class="date">10.06.2026 • 19:45</div>
+  <div class="quote">„Wtedy zaczęła się nasza historia.”</div>
+</div>
+
+<!-- LICZNIK -->
+<div class="counter-section">
+  <div class="counter-title">❤️ Jesteśmy razem:</div>
+  <div class="counter">
+    <div class="counter-box"><span class="num" id="days">0</span><span class="label">dni</span></div>
+    <div class="counter-box"><span class="num" id="hours">0</span><span class="label">godzin</span></div>
+    <div class="counter-box"><span class="num" id="minutes">0</span><span class="label">minut</span></div>
+    <div class="counter-box"><span class="num" id="seconds">0</span><span class="label">sekund</span></div>
+  </div>
+</div>
+
+<!-- HISTORIA -->
+<section>
+  <h2>⏳ Nasza historia</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="emoji">🐕</span><h3>Pniowiec — pierwsze spotkanie</h3>
+      <p>Miejsce, od którego wszystko się zaczęło.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="emoji">🤗</span><h3>Pierwszy uścisk</h3>
+      <p>Ten moment, w którym świat zwolnił.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="emoji">🚔</span><h3>Pamiętna akcja z policją XD</h3>
+      <p>Do dziś się z tego śmiejemy.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="emoji">🫶</span><h3>Pierwsze trzymanie za rękę</h3>
+      <p>Drobny gest, a znaczył wszystko.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="emoji">🍕</span><h3>Moment przy pizzerii</h3>
+      <p>Zwolniony czas i Twoje piękne oczy.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="emoji">❤️</span><h3>10.06.2026 — oficjalnie razem</h3>
+      <p>Data, którą noszę w sercu każdego dnia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA — KARUZELA -->
+<section>
+  <h2>📸 Nasze chwile</h2>
+  <div class="carousel">
+    <div class="carousel-viewport">
+      <img class="carousel-img" id="carouselImg" src="zdjecia/4.jpeg" alt="Nasze zdjęcie">
+      <span class="carousel-nav carousel-prev" onclick="carouselPrev()">‹</span>
+      <span class="carousel-nav carousel-next" onclick="carouselNext()">›</span>
+    </div>
+    <div class="carousel-info">
+      <span class="carousel-counter" id="carouselCounter">1 / 28</span>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+</section>
+
+<!-- ZA CO CIĘ KOCHAM -->
+<section>
+  <h2>❤️ Za co Cię kocham</h2>
+  <div class="love-grid">
+    <div class="love-card"><span class="emoji">😂</span><p>Twój śmiech — ten, który potrafi poprawić mi cały dzień.</p></div>
+    <div class="love-card"><span class="emoji">🫂</span><p>To, jak się przytulasz — jakbyś chciała zatrzymać czas.</p></div>
+    <div class="love-card"><span class="emoji">🗣️</span><p>To, w jaki sposób mówisz — każde słowo ma w sobie Ciebie.</p></div>
+    <div class="love-card"><span class="emoji">💬</span><p>Twoja nieskończona gadatliwość — mógłbym słuchać godzinami.</p></div>
+    <div class="love-card"><span class="emoji">😈</span><p>Twoje brudne myśli — i ten błysk w oku, kiedy je zdradzasz.</p></div>
+    <div class="love-card"><span class="emoji">🥊</span><p>Twoje „bicie” i zaczepki — nawet one są słodkie.</p></div>
+    <div class="love-card"><span class="emoji">😼</span><p>Twoje drapanie — podobno to oznaka miłości.</p></div>
+    <div class="love-card"><span class="emoji">🔥</span><p>Twoja agresywność w wersji „metr pięćdziesiąt czystej furii”.</p></div>
+    <div class="love-card"><span class="emoji">❤️</span><p>I przede wszystkim — cała Ty.</p></div>
+  </div>
+</section>
+
+<!-- LIST -->
+<section>
+  <h2>💌 List do Wiki</h2>
+  <div class="letter">
+    <p><strong>Wika, Kochanie ❤️</strong></p>
+    <p>Dzisiaj jest Twój dzień. Twój osiemnasty urodzinowy dzień. I chociaż pewnie dostaniesz jeszcze mnóstwo prezentów, życzeń i pięknych słów, chciałem dać Ci coś, co zostanie z Tobą trochę dłużej.</p>
+    <p>Chciałem napisać Ci ten list, żebyś mogła kiedyś do niego wrócić i przypomnieć sobie, jak bardzo jesteś dla mnie ważna.</p>
+    <p>Poznając Cię, nie wiedziałem, ile tak naprawdę wniesiesz do mojego życia. Nie wiedziałem, ile będzie między nami śmiechu, wygłupów, przytulania, głupich rozmów, naszych małych dram, a przede wszystkim — ile pięknych chwil razem przeżyjemy.</p>
+    <p>Uwielbiam w Tobie naprawdę wiele rzeczy. Twój uśmiech, Twoje oczy, Twój sposób mówienia i to, jak potrafisz gadać godzinami. Uwielbiam Twoje małe gesty, które może dla Ciebie nic nie znaczą, a dla mnie potrafią znaczyć bardzo dużo.</p>
+    <p>Uwielbiam nasze przytulanie, nasze wygłupy, nasze głupie rozmowy i nawet te momenty, kiedy potrafisz mnie doprowadzić do szału. 😂❤️</p>
+    <p>Jesteś po prostu sobą. I właśnie tę Ciebie chcę mieć obok.</p>
+    <p>Nie chcę obiecywać Ci, że zawsze będzie idealnie, bo oboje wiemy, że życie takie nie jest. Chcę za to obiecać Ci, że będę chciał walczyć o nasze dobre chwile, rozmawiać, kiedy będzie źle, śmiać się z Tobą, kiedy będzie dobrze i tworzyć razem wspomnienia, do których będziemy wracać po latach.</p>
+    <p>Dzisiaj zaczynasz kolejny rozdział swojego życia. Masz już 18 lat. I może brzmi to trochę poważnie, ale dla mnie nadal będziesz tą samą Wiki, którą chcę przytulać, całować, drażnić i rozśmieszać.</p>
+    <p>Chcę, żebyś wiedziała, że jestem z Ciebie dumny. Z tego, kim jesteś i z tego, kim dopiero się staniesz. Mam nadzieję, że spełnisz swoje marzenia, nawet te najbardziej szalone. Że będziesz robiła to, co daje Ci szczęście. I że kiedyś, patrząc wstecz na swoje życie, będziesz mogła powiedzieć:</p>
+    <p><strong>„Kurde, naprawdę dobrze je przeżyłam.”</strong></p>
+    <p>A jeśli będę mógł być częścią tej historii, to będzie dla mnie coś wyjątkowego.</p>
+    <p>Dziękuję Ci za każdy uśmiech.<br>Za każde przytulenie.<br>Za każdą rozmowę.<br>Za każdą głupotę, którą zrobiliśmy razem.<br>Za wszystkie wspomnienia, które już mamy.<br>I za te wszystkie, których jeszcze nawet nie zdążyliśmy stworzyć.</p>
+    <p>Wszystkiego najlepszego z okazji Twoich 18. urodzin, Wika. ❤️</p>
+    <p>Mam nadzieję, że ten dzień zapamiętasz na długo.</p>
+    <p>I pamiętaj — niezależnie od tego, ile będziesz miała lat, dla mnie zawsze będziesz moją małą, kochaną wariatką. ❤️</p>
+    <p><strong>Kocham Cię.</strong></p>
+    <div class="signature">Na zawsze Twój,<br>Karol ❤️</div>
+  </div>
+</section>
+
+<!-- PIOSENKA -->
+<div class="song-section">
+  <h3>🎵 Nasza piosenka</h3>
+  <p>Ta, przy której zawsze myślę o Tobie.</p>
+  <div class="song-title">Cheatz — Nieskończoność</div>
+</div>
+
+<!-- URODZINY -->
+<section>
+  <h2>🎂 18 lat</h2>
+  <div class="birthday">
+    <p>Wika, dziś zaczynasz kolejny rozdział swojego życia.</p>
+    <div class="date-big">30.08.2026</div>
+    <p>A ja chcę być obok Ciebie podczas kolejnych.</p>
+    <p style="margin-top:20px;">🖤❤️</p>
+  </div>
+</section>
+
+<!-- UKRYTA NIESPODZIANKA -->
+<div class="surprise-section">
+  <button class="surprise-btn" onclick="toggleSurprise()">Kliknij, jeśli myślisz, że to już wszystko...</button>
+  <div class="surprise-content" id="surprise">
+    <div class="surprise-inner">
+      <p>...a to dopiero początek. 🖤❤️</p>
+      <p style="margin-top:15px;">Wika, jeśli to czytasz — wiedz, że każda sekunda z Tobą jest warta tego wszystkiego.</p>
+      <p style="margin-top:15px;">Dziękuję, że jesteś.</p>
+      <p style="margin-top:25px; font-size:1.4rem; color:#ff2b2b;">Kocham Cię, wariatko. ❤️</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Zrobione z ❤️ dla Wiki • 30.08.2026
+</footer>
+
+<script>
+  // ===== LICZNIK =====
+  const startDate = new Date('2026-06-10T19:45:00');
+
+  function updateCounter() {
+    const now = new Date();
+    const diff = now - startDate;
+    if (diff < 0) {
+      document.getElementById('days').textContent = '0';
+      document.getElementById('hours').textContent = '0';
+      document.getElementById('minutes').textContent = '0';
+      document.getElementById('seconds').textContent = '0';
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
+  setInterval(updateCounter, 1000);
+  updateCounter();
+
+  // ===== UKRYTA NIESPODZIANKA =====
+  function toggleSurprise() {
+    const el = document.getElementById('surprise');
+    el.classList.toggle('open');
+  }
+
+  // ===== SERCA W TLE =====
+  const heartsContainer = document.getElementById('hearts');
+  const heartSymbols = ['❤️', '🖤', '❤️', '💕', '❤️'];
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.animationDuration = (8 + Math.random() * 8) + 's';
+    heart.style.fontSize = (0.8 + Math.random() * 1.5) + 'rem';
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), 16000);
+  }
+  setInterval(createHeart, 800);
+  for (let i = 0; i < 8; i++) setTimeout(createHeart, i * 300);
+
+  // ===== ODTWARZACZ MUZYKI =====
+  const bgMusic = document.getElementById('bgMusic');
+  const playBtn = document.getElementById('playBtn');
+  const seekBar = document.getElementById('seekBar');
+  const volumeBar = document.getElementById('volumeBar');
+  const timeDisplay = document.getElementById('timeDisplay');
+  const volIcon = document.getElementById('volIcon');
+  let isMuted = false;
+
+  function toggleMusic() {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      playBtn.textContent = '⏸️';
+    } else {
+      bgMusic.pause();
+      playBtn.textContent = '▶️';
+    }
+  }
+
+  bgMusic.addEventListener('timeupdate', () => {
+    if (bgMusic.duration) {
+      const progress = (bgMusic.currentTime / bgMusic.duration) * 100;
+      seekBar.value = progress;
+      timeDisplay.textContent = formatTime(bgMusic.currentTime) + ' / ' + formatTime(bgMusic.duration);
+    }
+  });
+
+  function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function seekAudio(value) {
+    if (bgMusic.duration) {
+      bgMusic.currentTime = (value / 100) * bgMusic.duration;
+    }
+  }
+
+  function setVolume(value) {
+    bgMusic.volume = value;
+    if (value === 0) {
+      volIcon.textContent = '🔇';
+    } else if (value < 0.5) {
+      volIcon.textContent = '🔉';
+    } else {
+      volIcon.textContent = '🔊';
+    }
+    isMuted = false;
+  }
+
+  function toggleMute() {
+    if (isMuted) {
+      bgMusic.volume = volumeBar.value;
+      isMuted = false;
+      volIcon.textContent = '🔊';
+    } else {
+      bgMusic.volume = 0;
+      isMuted = true;
+      volIcon.textContent = '🔇';
+    }
+  }
+
+  bgMusic.volume = 0.7;
+
+  let musicStarted = false;
+  function startMusicOnce() {
+    if (musicStarted) return;
+    musicStarted = true;
+    bgMusic.play().then(() => {
+      playBtn.textContent = '⏸️';
+    }).catch(() => {
+      playBtn.textContent = '▶️';
+    });
+  }
+  document.addEventListener('click', startMusicOnce, { once: true });
+  document.addEventListener('touchstart', startMusicOnce, { once: true });
+
+  // ===== KARUZELA =====
+  const carouselImages = [
+    'zdjecia/4.jpeg',
+    'zdjecia/1.jpeg',
+    'zdjecia/2.jpg',
+    'zdjecia/3.jpg',
+    'zdjecia/5.jpeg',
+    'zdjecia/6.jpeg',
+    'zdjecia/7.jpeg',
+    'zdjecia/8.jpeg',
+    'zdjecia/9.jpeg',
+    'zdjecia/10.jpeg',
+    'zdjecia/11.jpeg',
+    'zdjecia/12.jpeg',
+    'zdjecia/13.jpeg',
+    'zdjecia/14.jpg',
+    'zdjecia/15.jpg',
+    'zdjecia/16.jpg',
+    'zdjecia/17.jpg',
+    'zdjecia/18.jpg',
+    'zdjecia/19.jpg',
+    'zdjecia/20.jpeg',
+    'zdjecia/21.jpg',
+    'zdjecia/22.jpg',
+    'zdjecia/23.jpeg',
+    'zdjecia/24.png',
+    'zdjecia/25.jpeg',
+    'zdjecia/26.jpeg',
+    'zdjecia/27.jpg',
+    'zdjecia/28.jpg',
+    'zdjecia/29.jpeg',
+    'zdjecia/30.jpg',
+    'zdjecia/31.jpg',
+    'zdjecia/32.jpeg',
+    'zdjecia/33.jpg',
+];
+
+  let carouselIndex = 0;
+  const carouselImg = document.getElementById('carouselImg');
+  const carouselCounter = document.getElementById('carouselCounter');
+  const carouselDots = document.getElementById('carouselDots');
+
+  // Kropki
+  carouselImages.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => carouselGoTo(i));
+    carouselDots.appendChild(dot);
+  });
+
+  function updateCarousel() {
+    carouselImg.classList.add('fading');
+    setTimeout(() => {
+      carouselImg.src = carouselImages[carouselIndex];
+      carouselCounter.textContent = (carouselIndex + 1) + ' / ' + carouselImages.length;
+      document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === carouselIndex);
+      });
+      carouselImg.classList.remove('fading');
+    }, 200);
+  }
+
+  function carouselNext() {
+    carouselIndex = (carouselIndex + 1) % carouselImages.length;
+    updateCarousel();
+    resetAutoPlay();
+  }
+
+  function carouselPrev() {
+    carouselIndex = (carouselIndex - 1 + carouselImages.length) % carouselImages.length;
+    updateCarousel();
+    resetAutoPlay();
+  }
+
+  function carouselGoTo(index) {
+    carouselIndex = index;
+    updateCarousel();
+    resetAutoPlay();
+  }
+
+  let autoplayTimer = setInterval(() => {
+    carouselIndex = (carouselIndex + 1) % carouselImages.length;
+    updateCarousel();
+  }, 5000);
+
+  function resetAutoPlay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(() => {
+      carouselIndex = (carouselIndex + 1) % carouselImages.length;
+      updateCarousel();
+    }, 5000);
+  }
+
+  // Klawiatura ← → (gdy nie ma otwartego nic innego)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') carouselNext();
+    if (e.key === 'ArrowLeft') carouselPrev();
+  });
+
+  // Swipe na telefonie
+  let carouselTouchX = 0;
+  const carouselViewport = document.querySelector('.carousel-viewport');
+  carouselViewport.addEventListener('touchstart', (e) => {
+    carouselTouchX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  carouselViewport.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].screenX - carouselTouchX;
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) carouselNext();
+      else carouselPrev();
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
